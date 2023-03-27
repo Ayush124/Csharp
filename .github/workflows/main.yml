@@ -1,5 +1,7 @@
+#name of the workflow
 name: Continuous Integration
 
+#will trigger on the master branch for push and pull request
 on: 
   push:
     branches: 
@@ -7,18 +9,24 @@ on:
   pull_request:
     branches: 
       - master
-
+      
+#Jobs are the set of steps which are setup in the same runner 
+      
 jobs:
   build:
+#will be built on Ubuntu os by taking default os version
 
     runs-on: ubuntu-latest
+#checkout of sourcecode
 
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
+      #setting up dotnet env
       with:
         dotnet-version: 3.1.101
+        #Building project
     - name: Build with dotnet
       run: dotnet build --configuration Release
       working-directory: ./AspNetMonsters.ApplicationInsights
