@@ -1,6 +1,9 @@
 #name of the workflow
 name: Continuous Integration
 
+
+#
+#Specifies the trigger for this workflow
 #will trigger on the master branch for push and pull request
 on: 
   push:
